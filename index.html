@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F5F1E8">
+<title>Fuente: de los deseos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #F5F1E8;
+    --ink: #4A2377;
+    --ink-soft: rgba(74, 35, 119, 0.6);
+    --ink-fainter: rgba(74, 35, 119, 0.3);
+    --teal: #0D7E87;
+    --coral: #F55F74;
+    --sky: #8CC5E3;
+    --divider: rgba(74, 35, 119, 0.12);
+    --card-bg: #FFFFFF;
+    --shadow: 0 1px 0 rgba(74, 35, 119, 0.04), 0 8px 24px -12px rgba(74, 35, 119, 0.14);
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .app {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+  }
+
+  header {
+    padding: 4px 4px 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--divider);
+  }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 400;
+    font-size: clamp(38px, 10vw, 52px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--coral);
+    font-weight: 500;
+  }
+
+  .tag-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 15px;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 44ch;
+  }
+
+  /* ----- Tabs ----- */
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    background: var(--divider);
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .tab {
+    background: transparent;
+    border: none;
+    color: var(--ink-soft);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .tab.active {
+    background: var(--card-bg);
+    color: var(--ink);
+    box-shadow: var(--shadow);
+  }
+
+  .tab-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--coral);
+    margin-left: 6px;
+  }
+
+  .tab.active .tab-count { color: var(--coral); }
+
+  /* ----- Subir form ----- */
+  .form-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+
+  .field-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+
+  .field-hint {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  input[type="url"], textarea {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1.5px solid var(--divider);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    color: var(--ink);
+    outline: none;
+    transition: border-color 0.15s;
+    resize: vertical;
+  }
+
+  input[type="url"]:focus, textarea:focus { border-color: var(--teal); }
+
+  textarea { min-height: 80px; font-family: inherit; }
+
+  .submit {
+    width: 100%;
+    min-height: 56px;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+    transition: transform 0.08s, opacity 0.2s;
+    margin-top: 4px;
+  }
+
+  .submit:active { transform: scale(0.99); }
+  .submit:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ----- Feedback ----- */
+  .msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-top: 14px;
+    text-align: center;
+  }
+  .msg.ok { background: rgba(13, 126, 135, 0.1); color: var(--teal); border: 1px solid var(--teal); }
+  .msg.err { background: rgba(245, 95, 116, 0.1); color: var(--coral); border: 1px solid var(--coral); }
+
+  /* ----- Filtros del banco ----- */
+  .filters {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 0 12px;
+    margin-bottom: 12px;
+    scrollbar-width: none;
+  }
+  .filters::-webkit-scrollbar { display: none; }
+
+  .filter-chip {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    background: var(--card-bg);
+    border: 1.5px solid var(--divider);
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+
+  .filter-chip.active {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  /* ----- Cards del banco ----- */
+  .post-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+
+  .post-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .platform-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .platform-tag::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--teal);
+  }
+
+  .platform-tag.twitter { color: var(--sky); }
+  .platform-tag.twitter::before { background: #5AA3D1; }
+  .platform-tag.tiktok { color: var(--coral); }
+  .platform-tag.tiktok::before { background: var(--coral); }
+  .platform-tag.instagram { color: #C13584; }
+  .platform-tag.instagram::before { background: #C13584; }
+
+  .embed-container {
+    padding: 8px 12px;
+    background: var(--paper);
+  }
+
+  .embed-container iframe {
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .fallback-link {
+    display: block;
+    padding: 18px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--paper);
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-style: italic;
+    transition: background 0.15s;
+    word-break: break-all;
+  }
+  .fallback-link:hover { background: var(--divider); }
+
+  .fallback-link .open-arrow {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 6px;
+    font-style: normal;
+  }
+
+  .autor-comment {
+    padding: 14px 18px 4px;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.4;
+    position: relative;
+  }
+
+  .autor-comment::before {
+    content: "";
+    display: inline-block;
+    font-family: 'Playfair Display', serif;
+    color: var(--coral);
+    font-size: 14px;
+    vertical-align: middle;
+    margin-right: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  /* ----- Voto ----- */
+  .voto-section {
+    padding: 16px 18px;
+    border-top: 1px solid var(--divider);
+    margin-top: 8px;
+  }
+
+  .voto-q {
+    margin-bottom: 16px;
+  }
+
+  .voto-q:last-child { margin-bottom: 0; }
+
+  .voto-q-label {
+    display: block;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .voto-opts {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .voto-opt {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 8px;
+    background: var(--paper);
+    border: 1.5px solid var(--divider);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 13px;
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .voto-opt:active { transform: scale(0.97); }
+  .voto-opt.selected {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+  }
+
+  .voto-submit {
+    width: 100%;
+    padding: 12px;
+    margin-top: 4px;
+    background: var(--coral);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: transform 0.08s, opacity 0.2s;
+  }
+
+  .voto-submit:disabled { opacity: 0.5; cursor: not-allowed; }
+  .voto-submit:not(:disabled):active { transform: scale(0.99); }
+
+  /* ----- Resumen tras votar ----- */
+  .resumen {
+    padding: 16px 18px;
+    border-top: 1px solid var(--divider);
+    background: linear-gradient(180deg, var(--paper) 0%, transparent 100%);
+  }
+
+  .resumen-header {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 12px;
+  }
+
+  .resumen-block { margin-bottom: 14px; }
+  .resumen-block:last-child { margin-bottom: 0; }
+
+  .resumen-q {
+    font-family: 'Playfair Display', serif;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .resumen-dist {
+    display: flex;
+    gap: 4px;
+    height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--divider);
+  }
+
+  .resumen-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    min-width: 2px;
+    transition: flex 0.5s ease;
+    padding: 0 4px;
+  }
+
+  .resumen-legend {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--ink-soft);
+    letter-spacing: 0.05em;
+  }
+
+  .resumen-total {
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-fainter);
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--divider);
+  }
+
+  /* ----- Empty state ----- */
+  .empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ink-soft);
+  }
+
+  .empty-icon {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 72px;
+    color: var(--ink-fainter);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .empty p {
+    max-width: 32ch;
+    margin: 0 auto;
+  }
+
+  .hidden { display: none !important; }
+
+  .loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--ink-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <header>
+    <div class="eyebrow">C· NyPE 2S 2026 Sección 2· Archivo colectivo</div>
+    <h1>Fuente: <em>de los deseos</em></h1>
+    <p class="tag-line">Un archivo colectivo de curiosidades algorítmicas para revisar en conjunto.</p>
+  </header>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="subir">Subir un link</button>
+    <button class="tab" data-tab="banco">Ver el banco<span class="tab-count" id="tab-count"></span></button>
+  </div>
+
+  <!-- ============= Tab Subir ============= -->
+  <div id="tab-subir">
+    <div class="form-card">
+      <div class="field">
+        <label class="field-label" for="url-input">Pegá el link</label>
+        <input type="url" id="url-input" placeholder="https://..." autocomplete="off" spellcheck="false">
+        <div class="field-hint">De Twitter/X, TikTok, Instagram o cualquier otra fuente.</div>
+      </div>
+      <div class="field">
+        <label class="field-label" for="comentario-input">¿Por qué te llamó la atención? (opcional)</label>
+        <textarea id="comentario-input" placeholder="Contame en una o dos frases..." maxlength="280"></textarea>
+      </div>
+      <button class="submit" id="submit-btn">Sumar al banco</button>
+      <div id="submit-msg"></div>
+    </div>
+  </div>
+
+  <!-- ============= Tab Banco ============= -->
+  <div id="tab-banco" class="hidden">
+    <div class="filters" id="filters">
+      <button class="filter-chip active" data-filter="all">Todo</button>
+      <button class="filter-chip" data-filter="twitter">Twitter/X</button>
+      <button class="filter-chip" data-filter="tiktok">TikTok</button>
+      <button class="filter-chip" data-filter="instagram">Instagram</button>
+      <button class="filter-chip" data-filter="otro">Otros</button>
+    </div>
+    <div id="posts-container">
+      <div class="loading">Cargando el banco...</div>
+    </div>
+  </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+// ============================================================
+// Configuración de Supabase
+// ============================================================
+const SUPABASE_CONFIG = {
+    url: "https://ucqhiywotmjpkdlllmwq.supabase.co",
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVjcWhpeXdvdG1qcGtkbGxsbXdxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU2NTAwMzMsImV4cCI6MjEwMTIyNjAzM30.ZAvcnTDJKclWtLr3_oj2yu1DYmCkxgUC5QbAwJwnk-0"
+  };
+
+const client = window.supabase.createClient(SUPABASE_CONFIG.url, SUPABASE_CONFIG.anonKey);
+
+// ============================================================
+// Device ID (para prevenir votos duplicados por dispositivo)
+// ============================================================
+function getDeviceId() {
+  let id = localStorage.getItem("fuente_device_id");
+  if (!id) {
+    id = "d_" + Math.random().toString(36).slice(2) + Date.now().toString(36);
+    localStorage.setItem("fuente_device_id", id);
+  }
+  return id;
+}
+const DEVICE_ID = getDeviceId();
+
+// ============================================================
+// Detección de plataforma
+// ============================================================
+function detectarPlataforma(url) {
+  try {
+    const u = new URL(url);
+    const h = u.hostname.toLowerCase().replace(/^www\./, "");
+    if (h === "twitter.com" || h === "x.com" || h === "mobile.twitter.com") return "twitter";
+    if (h === "tiktok.com" || h.endsWith(".tiktok.com")) return "tiktok";
+    if (h === "instagram.com" || h.endsWith(".instagram.com")) return "instagram";
+    return "otro";
+  } catch (e) {
+    return "otro";
+  }
+}
+
+function extraerTikTokId(url) {
+  const match = url.match(/\/video\/(\d+)/);
+  return match ? match[1] : null;
+}
+
+// ============================================================
+// Renderizado de embeds
+// ============================================================
+function renderEmbed(url, plataforma) {
+  if (plataforma === "twitter") {
+    return `<div class="embed-container"><blockquote class="twitter-tweet" data-conversation="none"><a href="${url}"></a></blockquote></div>`;
+  }
+  if (plataforma === "tiktok") {
+    const id = extraerTikTokId(url);
+    if (id) {
+      return `<div class="embed-container"><blockquote class="tiktok-embed" cite="${url}" data-video-id="${id}" style="max-width:325px;min-width:250px;margin:0 auto"><section></section></blockquote></div>`;
+    }
+  }
+  if (plataforma === "instagram") {
+    return `<div class="embed-container"><blockquote class="instagram-media" data-instgrm-permalink="${url}" data-instgrm-version="14"></blockquote></div>`;
+  }
+  // fallback: solo link
+  return `<a class="fallback-link" href="${url}" target="_blank" rel="noopener">${url.replace(/^https?:\/\//, "").slice(0, 60)}${url.length > 60 ? "…" : ""}<span class="open-arrow">→ abrir</span></a>`;
+}
+
+function procesarEmbeds() {
+  // Twitter
+  if (window.twttr && window.twttr.widgets) {
+    window.twttr.widgets.load();
+  } else if (!document.getElementById("tw-script")) {
+    const s = document.createElement("script");
+    s.id = "tw-script";
+    s.async = true;
+    s.src = "https://platform.twitter.com/widgets.js";
+    document.body.appendChild(s);
+  }
+  // TikTok: re-inyectar el script fuerza reprocess
+  const oldTT = document.getElementById("tt-script");
+  if (oldTT) oldTT.remove();
+  const tt = document.createElement("script");
+  tt.id = "tt-script";
+  tt.async = true;
+  tt.src = "https://www.tiktok.com/embed.js";
+  document.body.appendChild(tt);
+  // Instagram
+  if (window.instgrm && window.instgrm.Embeds) {
+    window.instgrm.Embeds.process();
+  } else if (!document.getElementById("ig-script")) {
+    const s = document.createElement("script");
+    s.id = "ig-script";
+    s.async = true;
+    s.src = "//www.instagram.com/embed.js";
+    document.body.appendChild(s);
+  }
+}
+
+// ============================================================
+// Estado
+// ============================================================
+const state = {
+  tab: "subir",
+  filter: "all",
+  posts: [],
+  votos: [],       // votos del dispositivo actual, para saber en qué ya votó
+  allVotos: [],    // todos los votos, para calcular resúmenes
+  votosEnCurso: {} // { postId: { curiosidad, credibilidad, confianza } }
+};
+
+// ============================================================
+// Tabs
+// ============================================================
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    const tab = t.dataset.tab;
+    state.tab = tab;
+    document.querySelectorAll(".tab").forEach(x => x.classList.toggle("active", x.dataset.tab === tab));
+    document.getElementById("tab-subir").classList.toggle("hidden", tab !== "subir");
+    document.getElementById("tab-banco").classList.toggle("hidden", tab !== "banco");
+    if (tab === "banco") loadBanco();
+  });
+});
+
+// ============================================================
+// Subir un link
+// ============================================================
+document.getElementById("submit-btn").addEventListener("click", async () => {
+  const urlInput = document.getElementById("url-input");
+  const comInput = document.getElementById("comentario-input");
+  const msgBox = document.getElementById("submit-msg");
+  const btn = document.getElementById("submit-btn");
+
+  msgBox.innerHTML = "";
+  const url = urlInput.value.trim();
+  if (!url) {
+    msgBox.innerHTML = `<div class="msg err">Pegá un link primero.</div>`;
+    return;
+  }
+
+  try {
+    new URL(url);
+  } catch (e) {
+    msgBox.innerHTML = `<div class="msg err">El link no parece válido. Chequealo.</div>`;
+    return;
+  }
+
+  const plataforma = detectarPlataforma(url);
+  const comentario = comInput.value.trim() || null;
+
+  btn.disabled = true;
+  btn.textContent = "Sumando...";
+
+  try {
+    const { error } = await client.from("deseos_posts").insert({
+      url,
+      plataforma,
+      comentario
+    });
+    if (error) throw error;
+    urlInput.value = "";
+    comInput.value = "";
+    msgBox.innerHTML = `<div class="msg ok">Link sumado al banco.</div>`;
+    setTimeout(() => { msgBox.innerHTML = ""; }, 3000);
+    updateTabCount();
+  } catch (err) {
+    console.error(err);
+    msgBox.innerHTML = `<div class="msg err">No se pudo sumar. Probá de nuevo.</div>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = "Sumar al banco";
+  }
+});
+
+// ============================================================
+// Filtros
+// ============================================================
+document.querySelectorAll(".filter-chip").forEach(chip => {
+  chip.addEventListener("click", () => {
+    document.querySelectorAll(".filter-chip").forEach(x => x.classList.remove("active"));
+    chip.classList.add("active");
+    state.filter = chip.dataset.filter;
+    renderPosts();
+  });
+});
+
+// ============================================================
+// Cargar banco
+// ============================================================
+async function loadBanco() {
+  const cont = document.getElementById("posts-container");
+  cont.innerHTML = `<div class="loading">Cargando el banco...</div>`;
+  try {
+    const [{ data: posts, error: e1 }, { data: votos, error: e2 }] = await Promise.all([
+      client.from("deseos_posts").select("*").order("created_at", { ascending: false }),
+      client.from("deseos_votos").select("*")
+    ]);
+    if (e1) throw e1;
+    if (e2) throw e2;
+    state.posts = posts || [];
+    state.allVotos = votos || [];
+    state.votos = state.allVotos.filter(v => v.device_id === DEVICE_ID);
+    renderPosts();
+    updateTabCount();
+  } catch (err) {
+    console.error(err);
+    cont.innerHTML = `<div class="msg err">No se pudo cargar el banco. Refrescá la página.</div>`;
+  }
+}
+
+function updateTabCount() {
+  const el = document.getElementById("tab-count");
+  el.textContent = state.posts.length ? `· ${state.posts.length}` : "";
+}
+
+// ============================================================
+// Render posts
+// ============================================================
+function renderPosts() {
+  const cont = document.getElementById("posts-container");
+  let posts = state.posts;
+  if (state.filter !== "all") {
+    posts = posts.filter(p => p.plataforma === state.filter);
+  }
+  if (posts.length === 0) {
+    cont.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">✽</div>
+        <p>${state.filter === "all" ? "El banco está vacío. Andá a 'Subir un link' para empezar." : "No hay contenido de esta plataforma todavía."}</p>
+      </div>`;
+    return;
+  }
+
+  const plataformaLabel = {
+    twitter: "Twitter · X",
+    tiktok: "TikTok",
+    instagram: "Instagram",
+    otro: "Enlace"
+  };
+
+  cont.innerHTML = posts.map(post => {
+    const yaVoto = state.votos.find(v => v.post_id === post.id);
+    const embed = renderEmbed(post.url, post.plataforma);
+    const platClass = post.plataforma || "otro";
+    const platLabel = plataformaLabel[post.plataforma] || "Enlace";
+    const fecha = formatearFecha(post.created_at);
+    const comentarioHtml = post.comentario
+      ? `<div class="autor-comment">"${escapeHtml(post.comentario)}"</div>`
+      : "";
+    const interactHtml = yaVoto
+      ? renderResumen(post.id)
+      : renderVotoForm(post.id);
+
+    return `
+      <article class="post-card" data-post-id="${post.id}">
+        <div class="post-header">
+          <span class="platform-tag ${platClass}">${platLabel}</span>
+          <span>${fecha}</span>
+        </div>
+        ${embed}
+        ${comentarioHtml}
+        ${interactHtml}
+      </article>
+    `;
+  }).join("");
+
+  // Attach handlers
+  cont.querySelectorAll(".voto-opt").forEach(btn => {
+    btn.addEventListener("click", () => handleVotoOpt(btn));
+  });
+  cont.querySelectorAll(".voto-submit").forEach(btn => {
+    btn.addEventListener("click", () => handleVotoSubmit(btn.dataset.postId));
+  });
+
+  procesarEmbeds();
+}
+
+function renderVotoForm(postId) {
+  const est = state.votosEnCurso[postId] || {};
+  return `
+    <div class="voto-section" data-post-id="${postId}">
+      <div class="voto-q">
+        <label class="voto-q-label">¿Te da curiosidad o te sorprende?</label>
+        <div class="voto-opts" data-dim="curiosidad">
+          <button class="voto-opt ${est.curiosidad === true ? 'selected' : ''}" data-val="true">Sí</button>
+          <button class="voto-opt ${est.curiosidad === false ? 'selected' : ''}" data-val="false">No</button>
+        </div>
+      </div>
+      <div class="voto-q">
+        <label class="voto-q-label">¿Te parece que el contenido es cierto?</label>
+        <div class="voto-opts" data-dim="credibilidad">
+          <button class="voto-opt ${est.credibilidad === 1 ? 'selected' : ''}" data-val="1">No es cierto</button>
+          <button class="voto-opt ${est.credibilidad === 2 ? 'selected' : ''}" data-val="2">Parcialmente</button>
+          <button class="voto-opt ${est.credibilidad === 3 ? 'selected' : ''}" data-val="3">Es cierto</button>
+        </div>
+      </div>
+      <div class="voto-q">
+        <label class="voto-q-label">¿Con cuánta seguridad respondiste la pregunta anterior?</label>
+        <div class="voto-opts" data-dim="confianza">
+          <button class="voto-opt ${est.confianza === 1 ? 'selected' : ''}" data-val="1">Nada seguro</button>
+          <button class="voto-opt ${est.confianza === 2 ? 'selected' : ''}" data-val="2">Algo seguro</button>
+          <button class="voto-opt ${est.confianza === 3 ? 'selected' : ''}" data-val="3">Muy seguro</button>
+        </div>
+      </div>
+      <button class="voto-submit" data-post-id="${postId}" ${completo(est) ? '' : 'disabled'}>
+        Enviar votación
+      </button>
+    </div>
+  `;
+}
+
+function completo(est) {
+  return typeof est.curiosidad === "boolean"
+    && typeof est.credibilidad === "number"
+    && typeof est.confianza === "number";
+}
+
+function handleVotoOpt(btn) {
+  const dim = btn.parentElement.dataset.dim;
+  const val = btn.dataset.val;
+  const postId = btn.closest(".voto-section").dataset.postId;
+
+  if (!state.votosEnCurso[postId]) state.votosEnCurso[postId] = {};
+
+  let parsed;
+  if (dim === "curiosidad") parsed = val === "true";
+  else parsed = parseInt(val, 10);
+
+  state.votosEnCurso[postId][dim] = parsed;
+
+  // Update UI
+  btn.parentElement.querySelectorAll(".voto-opt").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+
+  // Enable submit if complete
+  const submitBtn = btn.closest(".voto-section").querySelector(".voto-submit");
+  submitBtn.disabled = !completo(state.votosEnCurso[postId]);
+}
+
+async function handleVotoSubmit(postId) {
+  const est = state.votosEnCurso[postId];
+  if (!completo(est)) return;
+
+  const btn = document.querySelector(`.voto-submit[data-post-id="${postId}"]`);
+  btn.disabled = true;
+  btn.textContent = "Enviando...";
+
+  try {
+    const { error } = await client.from("deseos_votos").insert({
+      post_id: parseInt(postId, 10),
+      device_id: DEVICE_ID,
+      curiosidad: est.curiosidad,
+      credibilidad: est.credibilidad,
+      confianza: est.confianza
+    });
+    if (error) throw error;
+
+    // Refresh votos
+    delete state.votosEnCurso[postId];
+    await loadBanco();
+  } catch (err) {
+    console.error(err);
+    btn.disabled = false;
+    btn.textContent = "Enviar votación";
+    alert("No se pudo enviar. Probá de nuevo.");
+  }
+}
+
+// ============================================================
+// Resumen tras votar
+// ============================================================
+function renderResumen(postId) {
+  const votos = state.allVotos.filter(v => v.post_id === postId);
+  const n = votos.length;
+  if (n === 0) return "";
+
+  const cur = { si: 0, no: 0 };
+  const cred = { 1: 0, 2: 0, 3: 0 };
+  const conf = { 1: 0, 2: 0, 3: 0 };
+  votos.forEach(v => {
+    if (v.curiosidad) cur.si++; else cur.no++;
+    cred[v.credibilidad] = (cred[v.credibilidad] || 0) + 1;
+    conf[v.confianza] = (conf[v.confianza] || 0) + 1;
+  });
+
+  return `
+    <div class="resumen">
+      <div class="resumen-header">Ya votaste · lo que dijo la clase</div>
+
+      <div class="resumen-block">
+        <div class="resumen-q">¿Curiosidad?</div>
+        <div class="resumen-dist">
+          ${barra(cur.si, n, "#0D7E87", "Sí " + cur.si)}
+          ${barra(cur.no, n, "#F55F74", "No " + cur.no)}
+        </div>
+      </div>
+
+      <div class="resumen-block">
+        <div class="resumen-q">¿Es cierto?</div>
+        <div class="resumen-dist">
+          ${barra(cred[1], n, "#F55F74", cred[1])}
+          ${barra(cred[2], n, "#D18A2C", cred[2])}
+          ${barra(cred[3], n, "#0D7E87", cred[3])}
+        </div>
+        <div class="resumen-legend"><span>No es cierto</span><span>Parcial</span><span>Es cierto</span></div>
+      </div>
+
+      <div class="resumen-block">
+        <div class="resumen-q">¿Con cuánta seguridad?</div>
+        <div class="resumen-dist">
+          ${barra(conf[1], n, "#8CC5E3", conf[1])}
+          ${barra(conf[2], n, "#5AA3D1", conf[2])}
+          ${barra(conf[3], n, "#4A2377", conf[3])}
+        </div>
+        <div class="resumen-legend"><span>Nada</span><span>Algo</span><span>Muy</span></div>
+      </div>
+
+      <div class="resumen-total">${n} ${n === 1 ? "voto" : "votos"} en total</div>
+    </div>
+  `;
+}
+
+function barra(count, total, color, label) {
+  if (!count || count === 0) return "";
+  const flex = count;
+  return `<div class="resumen-bar" style="flex:${flex}; background:${color}">${label}</div>`;
+}
+
+// ============================================================
+// Helpers
+// ============================================================
+function escapeHtml(s) {
+  const div = document.createElement("div");
+  div.textContent = s;
+  return div.innerHTML;
+}
+
+function formatearFecha(iso) {
+  const d = new Date(iso);
+  const ahora = new Date();
+  const diffMs = ahora - d;
+  const diffMin = Math.floor(diffMs / 60000);
+  const diffHr = Math.floor(diffMin / 60);
+  const diffDia = Math.floor(diffHr / 24);
+  if (diffMin < 1) return "recién";
+  if (diffMin < 60) return `hace ${diffMin} min`;
+  if (diffHr < 24) return `hace ${diffHr} h`;
+  if (diffDia < 7) return `hace ${diffDia} d`;
+  return d.toLocaleDateString("es-AR", { day: "numeric", month: "short" });
+}
+
+// ============================================================
+// Init
+// ============================================================
+loadBanco();
+</script>
+</body>
+</html>
